@@ -80,7 +80,22 @@ Or see Talos dashboard:
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig dashboard  
 ```
 
-## 6. Reset the node if you want to start all over again
+## 6. Get Kubeconfig
+
+```sh
+export KUBECONFIG="kubeconfig"
+talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig kubeconfig
+```
+
+Verify with
+
+```sh
+kubectl get nodes -A -o wide 
+```
+
+## 7. Misc 
+
+### Reset the node if you want to start all over again
 
 ```sh
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig reset
