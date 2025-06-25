@@ -6,7 +6,6 @@ A very versatile Linux distribution, which ships with Kubernetes, with an API wh
 
 How to get things going on real hardware that maybe sits around your house, like a Raspberry Pi 5. 
 
-
 Step 1. Prepare the RPi
 
 Download, unpack ```metal-arm64.raw.zst``` https://github.com/talos-rpi5/talos-builder/releases/tag/v1.10.2-rpi5-pre3 and ```dd``` to a SD-Card with ```sudo dd if=./metal-arm64.raw of=/dev/disk4 conv=fsync bs=4M```
