@@ -74,6 +74,17 @@ Or see Talos dashboard:
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig dashboard  
 ```
 
+## 4. Reset the node if you want to start all over again
+
+```sh
+talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig reset
+```
+
+Also use the ```wipe: true```
+
+https://github.com/Real-World-ML/talos-8afb/blob/df92dec48f1057e2a1e428089b1721ccf7f9d297/controlplane.yaml#L19-L20
+
+---
 
 Links:
 
