@@ -15,19 +15,14 @@ How to get things going on real hardware that maybe sits around your house, like
 brew install zstd talosctl
 ```
 
+## 2. Prepare the RPi
 
-## 2. Download the disk image for RPI5 
+Download, unpack ```metal-arm64.raw.zst``` https://github.com/talos-rpi5/talos-builder/releases/tag/v1.10.2-rpi5-pre3 and ```dd``` to a SD-Card with ```sudo dd if=./metal-arm64.raw of=/dev/disk4 conv=fsync bs=4M```
 
-Download ```v1.10.2-rpi5-pre3``` from https://github.com/talos-rpi5/talos-builder/releases/tag/v1.10.2-rpi5-pre3
-The disk image is ```metal-arm64.raw.zst```
+Plug-in the SD-Card and the network cable and power up the RPi. 
+Let's assume the RPi gets an IP inside your network and that is 192.168.1.155.
 
-
-```sh
-sudo dd if=./metal-arm64.raw of=/dev/disk4 conv=fsync bs=4M 
-```
-
-
-https://github.com/siderolabs/sbc-raspberrypi/issues/23#issuecomment-2799643923
+Talos is now in a recovery mode, awaiting 2 more steps, one for configuration and one for boostraping Kubernetes. 
 
 
 ## 1. Generate Talos config
@@ -52,7 +47,14 @@ And apply it:
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig apply-config -f ./controlplane.yaml --insecure
 ```
 
+Once the configuration is applied, which takes less than 2 minutes, you can verify it:
+
+```sh
+talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig version
+```
+
 ## 2. Boostrap
+
 ```sh
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig bootstrap 
 ```
@@ -60,6 +62,19 @@ talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig bootstrap
 
 ## 3. Verify
 
+At this moment also you can follow the Linux kernel logs via: 
+
 ```sh
-talosctl --talosconfig=./talosconfig -n 192.168.1.155 -e 192.168.1.155 dashboard
+talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig dmesg -f 
 ```
+
+Or see Talos dashboard:
+
+```sh
+talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig dashboard  
+```
+
+
+Links:
+
+- https://github.com/siderolabs/sbc-raspberrypi/issues/23#issuecomment-2799643923
