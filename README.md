@@ -17,7 +17,13 @@ brew install zstd talosctl
 
 ## 2. Prepare the RPi
 
-Download, unpack ```metal-arm64.raw.zst``` https://github.com/talos-rpi5/talos-builder/releases/tag/v1.10.2-rpi5-pre3 and ```dd``` to a SD-Card with ```sudo dd if=./metal-arm64.raw of=/dev/disk4 conv=fsync bs=4M```
+Find out on MacOS ```diskutil list``` which disk is your SD-Card.
+
+Download, unpack ```metal-arm64.raw.zst``` from https://github.com/talos-rpi5/talos-builder/releases/tag/v1.10.2-rpi5-pre3 and ```dd``` to a SD-Card with:
+
+```sh
+sudo dd if=./metal-arm64.raw of=/dev/disk4 conv=fsync bs=4M
+```
 
 Plug-in the SD-Card and the network cable and power up the RPi. 
 Let's assume the RPi gets an IP inside your network and that is 192.168.1.155.
@@ -31,7 +37,7 @@ Talos is now in a recovery mode, awaiting 2 more steps, one for configuration an
 mkdir talos-8afb && cd talos-8afb 
 ```
 
-```
+```sh
 talosctl gen config ll-8afb https://192.168.1.155:6443 \
     --with-examples=false \
      --with-docs=false
