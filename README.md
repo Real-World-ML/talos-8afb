@@ -31,7 +31,7 @@ Let's assume the RPi gets an IP inside your network and that is 192.168.1.155.
 Talos is now in a recovery mode, awaiting 2 more steps, one for configuration and one for boostraping Kubernetes. 
 
 
-## 1. Generate Talos config
+## 3. Generate Talos config
 
 ```sh
 mkdir talos-8afb && cd talos-8afb 
@@ -59,14 +59,14 @@ Once the configuration is applied, which takes less than 2 minutes, you can veri
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig version
 ```
 
-## 2. Boostrap
+## 4. Boostrap
 
 ```sh
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig bootstrap 
 ```
 
 
-## 3. Verify
+## 5. Verify
 
 At this moment also you can follow the Linux kernel logs via: 
 
@@ -80,7 +80,7 @@ Or see Talos dashboard:
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig dashboard  
 ```
 
-## 4. Reset the node if you want to start all over again
+## 6. Reset the node if you want to start all over again
 
 ```sh
 talosctl -n 192.168.1.155 -e 192.168.1.155 --talosconfig=./talosconfig reset
@@ -94,4 +94,4 @@ https://github.com/Real-World-ML/talos-8afb/blob/df92dec48f1057e2a1e428089b1721c
 
 Links:
 
-- https://github.com/siderolabs/sbc-raspberrypi/issues/23#issuecomment-2799643923
+https://github.com/siderolabs/sbc-raspberrypi/issues/23#issuecomment-2799643923
