@@ -1,6 +1,6 @@
 # How to get a real world 1 node Kubernetes cluster, in less than 10 minutes.
 
-What is Talos Linux ?
+What is [Talos Linux](https://www.talos.dev/) ?
 
 A very versatile Linux distribution, which ships with Kubernetes, with an API which can be accessed with a CLI client.
 
